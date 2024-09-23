@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>Edit profile</h1>
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input 
+    matInput 
+    type="text" 
+    [(ngModel)]="user.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input 
+    matInput 
+    type="text" 
+    [(ngModel)]="user.userName" >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Transcript</mat-label>
+    <input 
+    matInput 
+    type="text" 
+    [(ngModel)]="user.exp">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field>
+    <mat-label>Major</mat-label>
+    <input 
+    matInput 
+    type="text"
+    [(ngModel)]="user.major">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>University</mat-label>
+    <input 
+    matInput 
+    type="text" 
+    [(ngModel)]="user.university">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Department</mat-label>
+    <input 
+    matInput 
+    type="text" 
+    [(ngModel)]="user.department">
+  </mat-form-field>
+  <p>Birthday</p>
+  <mat-form-field>
+    <input 
+    matInput
+    type="date"  
+    [(ngModel)]="user.birthdate">
+  </mat-form-field>
+<p></p>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input 
+    matInput 
+    type="email" 
+    [(ngModel)]="user.email">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cellphone</mat-label>
+    <input 
+    matInput
+    type="number"  
+    [(ngModel)]="user.cellphone">
+  </mat-form-field>
+<p></p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancel</button>
+  <button mat-flat-button [mat-dialog-close]="user" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,34 @@
+
+input[type = "file"]{
+    display: none;
+}
+
+
+.centerImage {
+    width: 150px; /* Or any size you want */
+    height: 150px; /* Should be the same as width for a perfect circle */
+    border-radius: 50%; /* This makes the div circular */
+    overflow: hidden; /* Ensures no part of the image spills out of the circle */
+    display: flex; /* Using Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border: 2px solid #000; /* Optional: if you want a border around the circle */
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+        width: 100%; /* Ensures image does not exceed the circle's width */
+        height: 100%; /* Ensures image does not exceed the circle's height */
+        object-fit: cover; /* Keeps the aspect ratio and covers the area */
+    }
+}
+ 
+.button {
+    margin: 15px;
+}
+
+.container-button {
+    display: flex; /* Using Flexbox for centering */
+    justify-content: left; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}

@@ -1,0 +1,11 @@
+.mat-mdc-input-element::-webkit-calendar-picker-indicator {
+    display: block;
+  }
+
+input[type = "file"]{
+    display: none;
+}
+
+mat-form-field {
+  margin: 10px;
+}

@@ -1,0 +1,51 @@
+<p>
+</p><h1>My Upcoming events...</h1>
+<mat-card *ngFor="let day of actualWeek" class="day-card">
+    <mat-card-header>
+      <mat-card-title>{{ day.day! }}</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-card *ngFor="let event of day.events"  fxLayout="row wrap">
+            <mat-card  class="event" 
+            fxFlex="50%"
+                    fxFlex.xs="50%"
+                    fxFlex.sm="50%">
+                <mat-card-content>
+                    <div class="carousel">
+                        <img mat-card-image *ngFor="let photo of event.photos; let i = index"
+                            [src]="photo"
+                            [alt]="'Image ' + (i + 1)"
+                            [class.active]="i === event.currentImgIndex">
+                        <button mat-button (click)="previousImage(event)" *ngIf="event.photos && event.photos.length > 1"><</button>
+                        <button mat-button (click)="nextImage(event)" *ngIf="event.photos && event.photos.length > 1">></button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="event" 
+            fxFlex="30%"
+            fxFlex.xs="30%"
+            fxFlex.sm="30%">
+                <mat-card-content>
+                    <mat-card-title>
+                        {{event.name}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{event.description}}
+                    </mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="event" 
+            fxFlex="20%"
+            fxFlex.xs="20%"
+            fxFlex.sm="20%">
+                <mat-card-actions>
+                    <button mat-button (click)="eventDetails(event, userLogin)"> Details </button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-card>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+</mat-card>
+

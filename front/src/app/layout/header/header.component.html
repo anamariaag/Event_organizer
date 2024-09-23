@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <img class="icon" src="assets/logo.ico"/>
+    <span routerLink="home" routerLinkActive="active-link"[routerLinkActiveOptions]="{exact: true}">Pro Coordinator</span>
+    <span class="spacer"></span>
+
+    <a *ngIf="loginStatus" mat-flat-button color="primary" routerLink="events" routerLinkActive="active-link"[routerLinkActiveOptions]="{exact: true}" > Events</a>
+    <a *ngIf="loginStatus && userType != 'ADMIN'" mat-flat-button color="primary" routerLink="{{eventRoute}}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> MyEvents</a>
+    
+    <a *ngIf="loginStatus && userType == 'ADMIN'" mat-flat-button color="primary" routerLink="user" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"> Users</a>
+
+    <span style="flex: 1 1 auto;"></span> <!-- This will push everything after it to the right -->
+  
+    <a *ngIf="loginStatus" mat-flat-button color="primary" routerLink="profile" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>person</mat-icon> Profile
+    </a>
+    <a *ngIf="loginStatus" mat-flat-button color="secondary" (click)="logOut()">LogOut</a>
+
+
+    <a *ngIf="!loginStatus" mat-flat-button color="primary" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">LogIn</a>
+    <a *ngIf="!loginStatus" mat-flat-button color="primary" routerLink="register" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Register</a>
+
+
+</mat-toolbar>

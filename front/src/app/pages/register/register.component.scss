@@ -1,0 +1,30 @@
+form {
+    max-width: 500px;
+    margin: 40px auto 20px;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    div:last-child {
+        text-align: right;
+    }
+}
+
+.mat-mdc-input-element::-webkit-calendar-picker-indicator {
+    display: block;
+  }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+
+    mat-flat-button {
+        margin: 10px ;
+    }
+}
+

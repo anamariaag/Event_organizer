@@ -1,0 +1,50 @@
+h2{
+    margin:30px;
+}
+
+.table-container{
+    margin: 10px;
+}
+
+.edit{
+    background-color: blue;
+    color: white;
+
+    &:hover{
+        background-color: darkblue;
+    }
+
+}
+
+.save{
+    background-color: green;
+    color: white;
+    margin: 1px;
+
+    &:hover{
+        background-color: darkgreen;
+    }
+
+}
+
+.cancel{
+    background-color: gray;
+    color: white;
+    margin: 1px;
+
+    &:hover{
+        background-color: darkgray;
+    }
+
+}
+
+.delete{
+    background-color: red;
+    color: white;
+    margin: 1px;
+
+    &:hover{
+        background-color: darkred;
+    }
+
+}

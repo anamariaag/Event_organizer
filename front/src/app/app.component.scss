@@ -1,0 +1,7 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+.content-wrapper {
+    max-height: calc(100vh - 60px); /* 60px es la altura del pie de página */
+  }

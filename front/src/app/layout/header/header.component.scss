@@ -1,0 +1,12 @@
+
+
+mat-toolbar a { 
+    color: white;
+
+    &.active-link{
+        color: #0D47A1;
+    }
+}
+.icon {
+    margin-right: 20px;
+}

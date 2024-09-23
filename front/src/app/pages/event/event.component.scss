@@ -1,0 +1,141 @@
+.carousel {
+    position: relative;
+    width: 100%; /* Adjust the width as needed */
+    overflow: hidden; /* Hide the non-active images */
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+
+
+  }
+  
+  .carousel img {
+    width: 100%; /* Images take full width of the container */
+    display: none; /* Hide all images by default */
+    height: 200px;
+    object-fit: contain;
+    transition: opacity 0.5s ease; /* Optional: for a fade-in effect */
+  }
+  
+  .carousel img.active {
+    display: block; /* Only display the active image */
+  }
+  
+  /* Style the buttons for navigation (optional) */
+  .carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-10%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 100;
+  }
+  
+  .carousel button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .carousel button:first-child {
+    left: 0;
+  }
+  
+  .carousel button:last-child {
+    right: 0;
+  }
+
+  .search-block{
+    width: 50%;
+    right: 0;
+    background: #fff;
+    border-radius: 10px;
+    .search-control{
+      flex: 1;
+      font-size: 1rem;
+      border: 0;
+      outline: none;
+      padding-left: 10px;
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap ;
+    gap: 20px;
+  }
+
+  .event {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* Adjust the width as per your design requirement */
+    width: calc(25% - 20px); /* 20px is subtracted to account for the gap */
+}
+
+@media (max-width: 600px) {
+    .event {
+        width: calc(100% - 20px);
+    }
+}
+
+@media (min-width: 601px) and (max-width: 960px) {
+    .event {
+        width: calc(33% - 20px);
+    }
+}
+
+/* Container styling */
+.filtercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 10px;
+
+  button{
+    min-height: 50px;
+  }
+}
+
+/* Toolbar and form field styling for consistency */
+.search-block, mat-form-field {
+  flex: 1; /* Allows items to grow and shrink as needed */
+  min-width: 120px; /* Prevents items from becoming too small */
+}
+
+/* Toolbar specific styling */
+.search-block {
+  display: flex;
+  align-items: center;
+  height: 57px; /* Adjust the height as needed */
+  min-height: 48px; /* You can set a minimum height */
+  padding: 0 10px; /* Adjust padding as needed */
+}
+
+.search-control {
+  width: 100%;
+  margin-left: 10px; /* Spacing after search icon */
+}
+
+mat-form-field{
+  max-width: 200px;
+}
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .filtercontainer {
+      flex-direction: column;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .filtercontainer {
+      justify-content: center;
+  }
+}

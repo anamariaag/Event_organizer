@@ -1,0 +1,118 @@
+<h1 mat-dialog-title>Add New User</h1>
+
+<mat-dialog-content>
+    <div class="register">
+        <form [formGroup]="formCreateUser">
+          
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+              <input matInput
+                type="email"
+                formControlName ="email"
+                name="email"
+                placeholder="Email"
+                required="required"
+              /> 
+              <!--<mat-error *ngIf="hasError('email', 'required')">Este campo es requerido</mat-error>-->
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+              <input matInput
+                type="text"
+                formControlName ="userName"
+                name="username"
+                placeholder="Username"
+                required="required"
+              />
+              <!--<mat-error>
+                {{hasError('name','required') ? 'Este campo es requerido': 'Necesitas rellenar todos los campos'}}
+              </mat-error>-->
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+              <input matInput
+                type="text"
+                formControlName ="name"
+                name="name"
+                placeholder="Name"
+                required="required"
+              />
+              <!--<mat-error>
+                {{hasError('name','required') ? 'Este campo es requerido': 'Necesitas rellenar todos los campos'}}
+              </mat-error>-->
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+              <input matInput
+                type="text"
+                formControlName ="lastName"
+                name="lastName"
+                placeholder="Last Name"
+                required="required"
+              />
+              <!--<mat-error>
+                {{hasError('name','required') ? 'Este campo es requerido': 'Necesitas rellenar todos los campos'}}
+              </mat-error>-->
+          </mat-form-field>
+    
+          <div>
+            <mat-radio-group aria-label="Select an option" formControlName="userType" name="userType">
+              <mat-radio-button value="1" > User </mat-radio-button>
+              <mat-radio-button value="2"> Organization </mat-radio-button>
+              <mat-radio-button value="3"> Administrator </mat-radio-button>
+
+            </mat-radio-group>
+          </div> <br>
+    
+          <mat-form-field>
+            <mat-label>Birthdate</mat-label>
+              <input matInput
+                type="date"
+                formControlName ="birthdate"
+                name="birthdate"
+                placeholder="Birthdate"
+                required="required"
+              />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Enrollment</mat-label>
+              <input matInput
+                type="text"
+                formControlName ="exp"
+                name="exp"
+                placeholder="Exp"
+                required="required"
+              />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+              <input matInput
+                type="password"
+                formControlName ="password"
+                name="password"
+                placeholder="Password"
+                required="required"
+              />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Confirm password</mat-label>
+              <input matInput
+                type="password"
+                formControlName ="confirm"
+                name="password"
+                placeholder="Confirm password"
+                required="required"
+              />
+          </mat-form-field>    
+        </form>
+      </div>
+
+
+
+</mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button (click)="onCreateUser()" [disabled]="formCreateUser.invalid">Crear</button>
+  </mat-dialog-actions>

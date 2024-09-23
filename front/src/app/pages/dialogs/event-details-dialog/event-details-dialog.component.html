@@ -1,0 +1,71 @@
+<h1 mat-dialog-title color="primary">{{data.event.name}} - Event Details</h1>
+<mat-dialog-content>
+    <div class="container">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Date and Time: {{data.event.date | date:'medium' }}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Description: {{data.event.description}}</p>
+                <p>Departments: {{data.event.programs}}</p>
+                <div class="carousel">
+                    <img mat-card-image *ngFor="let photo of data.event.photos; let i = index"
+                         [src]="photo"
+                         [alt]="'Image ' + (i + 1)"
+                         [class.active]="i === data.event.currentImgIndex">
+                    <button mat-button (click)="previousImage(data.event)" *ngIf="data.event.photos && data.event.photos.length > 1"> < </button>
+                    <button mat-button (click)="nextImage(data.event)" *ngIf="data.event.photos && data.event.photos.length > 1">></button>
+                </div>
+                <p></p>
+                <mat-icon fontIcon="location_on"></mat-icon>{{data.event.location}}
+                <p>Category: {{data.event.category}}</p>
+                <p>Related links:</p> 
+                <ul>
+                    <li *ngFor="let link of data.event.relatedLinks"><a href="link">{{link}}</a></li>
+                </ul>
+                <p *ngIf="data.user.userType == 'ORG'">Attendants: {{data.event.idUsers?.length}} people</p>
+                <p>Comments and Reviews: </p>
+                <div *ngFor="let review of reviews" class="comment-container">
+                    <img class="user-avatar" src="{{review.personPhoto}}" alt="Avatar del usuario">
+                    <div class="comment-details">
+                      <span class="user-name">{{review.personUserName}}</span>
+                      <span class="comment-date">{{review.date | date:'medium'}}</span>
+                      <p *ngIf="!review.status" class="comment-text">{{review.comment}}</p>
+                      <ng-container *ngIf="review.status">
+                        <input type="text" matInput [(ngModel)]="review.comment">
+                      </ng-container>
+                    </div>
+                    <div class="comment-buttons" *ngIf="data.user._id == review.idPerson">
+                        <button mat-icon-button color="primary" *ngIf="!review.status" (click)="toggleEdit(review)">
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="primary" *ngIf="review.status" (click)="editComment(review)">
+                            <mat-icon>save</mat-icon>
+                          </button>
+                        <button mat-icon-button color="primary" (click)="deleteComment(review)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <mat-form-field>
+                    <mat-label>Comment</mat-label>
+                    <input 
+                    type="text" 
+                    matInput 
+                    [(ngModel)]="newReview.comment">
+                </mat-form-field>
+                <button mat-button color="primary" (click)="addReview()">Add comment</button>
+            </mat-card-content>
+            <div id="map" style="height: 400px; width: 100%;"></div>   
+        </mat-card>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-flat-button color="primary" *ngIf="data.user.userType == 'USER' && !data.event.idUsers!.includes(loggedUser._id!) " (click)="attendEvent(data.event)"> Attend </button>
+    <button mat-flat-button color="primary" *ngIf="data.user.userType == 'USER' && isGoogleAccount && !data.event.idUsersCalendar!.includes(loggedUser._id!)" (click)="addCalendar(data.event)"> Add to Calendar </button>
+    <button mat-flat-button color="primary" *ngIf="data.user.userType == 'USER' && isGoogleAccount && data.event.idUsersCalendar!.includes(loggedUser._id!)" disabled> Added to Calendar </button>
+    <button mat-flat-button color="warn" (click)="cerrar()">Close</button>
+<br>
+</mat-dialog-actions>

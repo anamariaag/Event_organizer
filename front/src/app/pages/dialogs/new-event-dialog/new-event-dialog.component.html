@@ -1,0 +1,89 @@
+<h1 mat-dialog-title>Create a new event</h1>
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Name of the event</mat-label>
+    <input matInput [(ngModel)]="event.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Place</mat-label>
+    <input type="text" matInput [(ngModel)]="event.location">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="event.description" rows="8"></textarea>
+  </mat-form-field>
+
+  <p>Date and Time</p>
+  <mat-form-field>
+    <input type="datetime-local" matInput min="{{dateToday() | date:'yyyy-MM-ddTHH:mm:ss.sss'}}" [(ngModel)]="event.date">
+  </mat-form-field>
+
+<p>Duration</p>
+
+<mat-form-field>
+  <mat-label>Hours</mat-label>
+  <mat-select [(ngModel)]="event.durationHour">
+    <mat-option *ngFor="let hour of hours" [value]="hour">{{ hour }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Minutes</mat-label>
+  <mat-select [(ngModel)]="event.durationMinute">
+    <mat-option *ngFor="let minute of minutes" [value]="minute">{{ minute }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+
+  <mat-form-field>
+    <mat-label>Categories</mat-label>
+    <mat-select [(ngModel)]="event.category">
+      <mat-option value="Tecnología">Tecnología</mat-option>
+      <mat-option value="Fiesta">Fiesta</mat-option>
+      <mat-option value="Graduaciones">Graduaciones</mat-option>
+      <mat-option value="Academico">Academico</mat-option>
+      <mat-option value="Cultural">Cultural</mat-option>
+      <mat-option value="Gastronómico">Gastronómico</mat-option>
+      <mat-option value="Deportes">Deportes</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Programs Organizing</mat-label>
+    <mat-select [(ngModel)]="event.programs" multiple>
+      <mat-option value="Electrónica, Sistemas y Servicios">Electrónica, Sistemas y Servicios</mat-option>
+      <mat-option value="Estudios Socioculturales">Estudios Socioculturales</mat-option>
+      <mat-option value="Estudios Sociopolíticos y Jurídicos">Estudios Sociopolíticos y Jurídicos</mat-option>
+      <mat-option value="Filosofia y Humanidades">Filosofia y Humanidades</mat-option>
+      <mat-option value="Formación Humana">Formación Humana</mat-option>
+      <mat-option value="Matemáticas y Física">Matemáticas y Física</mat-option>
+      <mat-option value="Hábitat y Desarrollo Urbano">Hábitat y Desarrollo Urbano</mat-option>
+      <mat-option value="Lenguas">Lenguas</mat-option>
+      <mat-option value="Matemáticas y Física">Matemáticas y Física</mat-option>
+      <mat-option value="Procesos Tecnológicos e Industriales">Procesos Tecnológicos e Industriales</mat-option>
+      <mat-option value="Psicología, Educación y Salud">Psicología, Educación y Salud</mat-option>
+      <mat-option value="Internacionalización">Internacionalización</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+<p></p>
+ 
+<button mat-flat-button color= "primary" (click) = 'clickFileSelector(eventImages)' > Add Pictures </button>
+
+<input #eventImages type="file" multiple (change)="onFileSelected($event)">
+
+<div *ngIf="selectedImages && selectedImages.length">
+  <p>Selected Files:</p>
+  <ul>
+    <li *ngFor="let file of selectedImagesArray">{{ file.name }}</li>
+  </ul>
+</div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-flat-button color= "warn" (click)="cancelar()">Cancel</button>
+  <button mat-flat-button color= "primary" [mat-dialog-close]="{event, selectedImages}" cdkFocusInitial>Create</button>
+</mat-dialog-actions> 

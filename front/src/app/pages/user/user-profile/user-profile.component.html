@@ -1,0 +1,94 @@
+<div class="container" fxLayout="row wrap">
+    <mat-card class="profile" 
+    class= "data" 
+    fxFlex="100%"
+    fxFlex.xs="100%"
+    fxFlex.sm="100%">
+        <mat-card-header>
+            <div class="centerImage">
+                <img mat-card-image src="{{user.photo}}" alt="Imagen de perfil">            
+            </div>          
+            <button mat-stroked-button color="primary" *ngIf="user.photo" (click) = 'clickFileSelector(profilePicture)'> Change picture </button>
+            <button mat-stroked-button color="primary" *ngIf="!user.photo" (click) = 'clickFileSelector(profilePicture)'> Add picture </button>
+            <input #profilePicture type="file" (change)="selectFile($event)">
+        </mat-card-header>
+    </mat-card>
+    <mat-card class= "data" 
+    fxFlex="50%"
+    fxFlex.xs="100%"
+    fxFlex.sm="50%">
+        <mat-card-header>
+          <mat-card-title>{{user.userName}}</mat-card-title>
+          <mat-card-subtitle>Username</mat-card-subtitle>
+        </mat-card-header> 
+    </mat-card>
+    <mat-card class= "data" 
+    fxFlex="50%"
+    fxFlex.xs="100%"
+    fxFlex.sm="50%">
+        <mat-card-header>
+            <mat-card-title>
+                {{user.email}} 
+            </mat-card-title>
+            <mat-card-subtitle>
+                Email
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class= "data" 
+    fxFlex="50%"
+    fxFlex.xs="100%"
+    fxFlex.sm="50%">
+        <mat-card-header>
+            <mat-card-title>
+                {{user.name}} {{user.lastName}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                Name
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class= "data" 
+    fxFlex="50%"
+    fxFlex.xs="100%"
+    fxFlex.sm="50%">
+        <mat-card-header>
+            <mat-card-title>
+                {{user.university}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                University
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class= "data" 
+    fxFlex="50%"
+    fxFlex.xs="100%"
+    fxFlex.sm="50%">
+        <mat-card-header>
+            <mat-card-title>
+                {{user.exp}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                Expediente
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class= "data" 
+    fxFlex="50%"
+    fxFlex.xs="100%"
+    fxFlex.sm="50%">
+        <mat-card-header>
+            <mat-card-title>
+                {{user.major}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                Major
+            </mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>
+<div class="container-button">
+    <button mat-stroked-button color="primary" (click)="editProfileDialog()" class="button">Edit profile</button>
+    <button mat-stroked-button color="primary" (click)="changePasswordDialog()" class="button">Change password</button>
+</div>

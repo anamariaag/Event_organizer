@@ -1,0 +1,50 @@
+.carousel {
+    position: relative;
+    width: 100%; /* Adjust the width as needed */
+    overflow: hidden; /* Hide the non-active images */
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  
+  .carousel img {
+    width: 100%; /* Images take full width of the container */
+    display: none; /* Hide all images by default */
+    height: 200px;
+    object-fit: contain;
+    transition: opacity 0.5s ease; /* Optional: for a fade-in effect */
+  }
+  
+  .carousel img.active {
+    display: block; /* Only display the active image */
+  }
+  
+  /* Style the buttons for navigation (optional) */
+  .carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-10%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 100;
+  }
+  
+  .carousel button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .carousel button:first-child {
+    left: 0;
+  }
+  
+  .carousel button:last-child {
+    right: 0;
+  }
+
+.event {
+    flex-direction: column;
+    justify-content: center;
+}
